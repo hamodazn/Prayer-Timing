@@ -10,6 +10,8 @@ import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import moment from 'moment';
+
 
 
 export default function MainContent() {
@@ -27,6 +29,8 @@ export default function MainContent() {
         displayName: "Berlin",
         apiName: "Berlin",
     });
+
+    const [today, setToday] = useState("");
 
     const availableCities = [
         {
@@ -47,7 +51,6 @@ export default function MainContent() {
     ];
 
     const getTimings = async () => {
-        console.log("getting timings");
         const selectedCity = availableCities.find(cityObj => cityObj.apiName === city.apiName);
         if (selectedCity) {
             const response = await axios.get(
@@ -60,6 +63,9 @@ export default function MainContent() {
     }
     useEffect(() => {
         getTimings();
+
+        const t = moment().format('MMM Do YYYY | h:mm');
+        setToday(t);
     }
         , [city]);
 
@@ -72,7 +78,6 @@ export default function MainContent() {
         const cityObject = availableCities.find((city) => {
             return city.apiName === event.target.value;
         });
-        console.log("the new Value is", event.target.value);
         setCity(cityObject)
     };
 
@@ -81,7 +86,7 @@ export default function MainContent() {
         <Grid container>
             <Grid xs={6}>
                 <div>
-                    <h2>September 14 | 2023</h2>
+                    <h2>{today}</h2>
                     <h1>{city.displayName}</h1>
                 </div>
             </Grid>
