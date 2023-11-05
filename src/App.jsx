@@ -15,7 +15,8 @@ function App() {
         style={{
           display: "flex",
           justifyContent: "center",
-          width: "100vw"
+          width: "100vw",
+          background:"grey"
         }}
       >
         <Container maxWidth="xl">

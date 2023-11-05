@@ -50,6 +50,9 @@ export default function MainContent() {
         },
     ];
 
+    const [timeUntilNextPrayer, setTimeUntilNextPrayer] = useState(''); // New state variable
+
+
     const getTimings = async () => {
         const selectedCity = availableCities.find(cityObj => cityObj.apiName === city.apiName);
         if (selectedCity) {
@@ -61,6 +64,7 @@ export default function MainContent() {
             console.error(`City with apiName "${city.apiName}" not found in availableCities`);
         }
     }
+
     useEffect(() => {
         getTimings();
 
@@ -93,7 +97,7 @@ export default function MainContent() {
             <Grid xs={6}>
                 <div>
                     <h2>Time till next Prayer</h2>
-                    <h1>00:10:20</h1>
+                    <h1>10</h1>
                 </div>
             </Grid>
         </Grid>
