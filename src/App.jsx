@@ -1,30 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Button from '@mui/material/Button';
-import MainContent from './components/MainContent';
-import Container from '@mui/material/Container';
+import { MainContent } from './components/MainContent';
+import { ThemeProvider } from '@mui/material/styles';
+import theme from './theme';
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100vw",
-          background:"grey"
-        }}
-      >
-        <Container maxWidth="xl">
-          <MainContent />
-        </Container>
-      </div>
-
-    </>
+    <ThemeProvider theme={theme}>
+      <MainContent />
+    </ThemeProvider>
   );
 }
 

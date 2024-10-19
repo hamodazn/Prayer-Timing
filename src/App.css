@@ -48,3 +48,9 @@ html {
 .MuiSvgIcon-root {
   color: white !important;
 }
+
+.centered-grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
